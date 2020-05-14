@@ -17,7 +17,7 @@ class GraphQLUploadProvider extends ServiceProvider {
     this.app.alias('Adonis/Addons/GraphQLFile', 'GraphQLFile');
 
     this.app.bind('Adonis/Middleware/GraphQLUpload', (app) => {
-      const GraphQLUploadMiddlware = require('../src/GraphQLUploadMiddlware');
+      const GraphQLUploadMiddlware = require('../src/GraphQLUploadMiddleware');
       return new GraphQLUploadMiddlware(app.use('Adonis/Src/Config'));
     });
   }
