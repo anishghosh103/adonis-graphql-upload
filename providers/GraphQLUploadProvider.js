@@ -38,6 +38,12 @@ class GraphQLUploadProvider extends ServiceProvider {
     this._registerCommands(config);
     this._registerBindings(config);
   }
+
+  boot() {
+    const ace = require('@adonisjs/ace');
+
+    ace.addCommand('GraphQL/Commands/Make:UploadScalar');
+  }
 }
 
 module.exports = GraphQLUploadProvider;
