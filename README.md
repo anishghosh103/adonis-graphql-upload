@@ -40,20 +40,18 @@ Then you can use the middleware in any route you want.
 Route.get().middleware('graphqlUpload');
 ```
 
-## Create File Scalar for GraphQL Schema
+## Create Scalar Type for GraphQL Schema
 
-Add the following line at the start of your graphql schema
+Run the following command
 
 ```js
-scalar File
+adonis make:guploadscalar
 ```
 
-Create the resolver for this scalar
+Now you can use 'File' type for file upload, like following:
 
 ```js
-const { GraphQLFile } = require('adonis-graphql-upload');
-
-const resolver = {
-  File: GraphQLFile,
-};
+type Mutation {
+  uploadFile(file: File!): UploadFileResponse
+}
 ```

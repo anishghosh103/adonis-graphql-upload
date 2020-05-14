@@ -1,12 +1,15 @@
 'use strict';
 
+const _ = require('lodash');
+
 class GraphQLUploadMiddleware {
   _post(request) {
     let { operations, map } = request.all();
     operations = JSON.parse(operations);
     map = JSON.parse(map);
     Object.keys(map).forEach((key) => {
-      operations.variables[map[key][0].split('.').pop()] = request.file(key);
+      const path = map[key][0].split('.');
+      _.set(operations, path, request.file(key));
     });
     return operations;
   }
