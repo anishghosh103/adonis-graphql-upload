@@ -19,7 +19,7 @@ class MakeUploadScalar extends Command {
    * @return {string}
    */
   static get signature() {
-    return 'make:guploadtype { name?=File: Name of scalar type }';
+    return 'make:guploadscalar { name?=File: Name of scalar type }';
   }
 
   /**
