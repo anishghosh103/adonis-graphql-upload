@@ -11,11 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@adonisjs/ace": "^5.0.8",
-    "@adonisjs/bodyparser": "^2.0.9",
     "@adonisjs/fold": "^4.0.9",
-    "@adonisjs/framework": "^5.0.9",
-    "graphql": "^15.0.0",
-    "japa": "^3.0.1",
-    "japa-cli": "^1.0.1"
+    "@adonisjs/framework": "^5.0.9"
   }
 }

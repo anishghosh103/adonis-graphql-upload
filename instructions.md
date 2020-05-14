@@ -41,5 +41,3 @@ const resolver = {
   File: GraphQLFile,
 };
 ```
-
-## Usage

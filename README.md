@@ -12,7 +12,7 @@ The package must be installed by using `adonis` command.
 
 You can use directly `npm` or `yarn` but the instructions (`instructions.js` and `instructions.md`) will not be displayed and ran.
 
-> :warning: This package requires `@adonisjs/bodyparser` to be installed.
+> :warning: This package requires `@adonisjs/bodyparser` and `graphql` to be installed.
 
 ## Register provider
 
