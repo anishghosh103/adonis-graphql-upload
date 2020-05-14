@@ -1,8 +1,13 @@
 'use strict';
 
-const path = require('path');
+const { join } = require('path');
 
 module.exports = async (cli) => {
   try {
-  } catch (error) {}
+    await cli.makeConfig(
+      'graphqlUpload.js',
+      join(__dirname, './config/graphqlUpload.js')
+    );
+    cli.command.completed('create', 'config/graphqlUpload.js');
+  } catch (err) {}
 };

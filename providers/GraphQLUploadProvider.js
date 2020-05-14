@@ -9,10 +9,16 @@
 
 const { ServiceProvider } = require('@adonisjs/fold');
 
+const defaultConfig = require('../config/graphqlUpload');
+
 class GraphQLUploadProvider extends ServiceProvider {
   register() {
+    const config = this.app
+      .use('Adonis/Src/Config')
+      .merge('graphqlUpload', defaultConfig);
+
     this.app.singleton('Adonis/Addons/GraphQLFile', (app) => {
-      return require('../src/GraphQLFile');
+      return require('../src/GraphQLFile')(config.typeName);
     });
     this.app.alias('Adonis/Addons/GraphQLFile', 'GraphQLFile');
 
