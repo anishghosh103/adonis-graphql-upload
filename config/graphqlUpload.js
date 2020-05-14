@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  typeName: 'File',
+  defaultTypeName: 'File',
 };

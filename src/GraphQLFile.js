@@ -1,8 +1,8 @@
 const { GraphQLScalarType, GraphQLError } = require('graphql');
 const File = require('@adonisjs/bodyparser/src/Multipart/File');
 
-module.exports = (typeName) =>
-  new GraphQLScalarType({
+module.exports = (typeName) => {
+  return new GraphQLScalarType({
     name: typeName,
     description: `The '${typeName}' scalar type represents a file upload.`,
     parseValue(value) {
@@ -16,3 +16,4 @@ module.exports = (typeName) =>
       throw new GraphQLError(`${typeName} serialization unsupported.`);
     },
   });
+};

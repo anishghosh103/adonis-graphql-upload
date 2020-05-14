@@ -12,13 +12,15 @@ const { ServiceProvider } = require('@adonisjs/fold');
 const defaultConfig = require('../config/graphqlUpload');
 
 class GraphQLUploadProvider extends ServiceProvider {
-  register() {
-    const config = this.app
-      .use('Adonis/Src/Config')
-      .merge('graphqlUpload', defaultConfig);
+  _registerCommands(config) {
+    this.app.bind('GraphQL/Commands/Make:UploadScalar', () =>
+      require('../commands/MakeUploadScalar')(config)
+    );
+  }
 
+  _registerBindings(config) {
     this.app.singleton('Adonis/Addons/GraphQLFile', (app) => {
-      return require('../src/GraphQLFile')(config.typeName);
+      return require('../src/GraphQLFile')(config.defaultTypeName);
     });
     this.app.alias('Adonis/Addons/GraphQLFile', 'GraphQLFile');
 
@@ -26,6 +28,15 @@ class GraphQLUploadProvider extends ServiceProvider {
       const GraphQLUploadMiddlware = require('../src/GraphQLUploadMiddleware');
       return new GraphQLUploadMiddlware(app.use('Adonis/Src/Config'));
     });
+  }
+
+  register() {
+    const config = this.app
+      .use('Adonis/Src/Config')
+      .merge('graphqlUpload', defaultConfig);
+
+    this._registerCommands(config);
+    this._registerBindings(config);
   }
 }
 
