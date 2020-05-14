@@ -2,7 +2,7 @@
 
 class GraphQLUploadMiddleware {
   _post(request) {
-    let { operations, map } = request.post();
+    let { operations, map } = request.all();
     operations = JSON.parse(operations);
     map = JSON.parse(map);
     Object.keys(map).forEach((key) => {

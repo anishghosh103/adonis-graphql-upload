@@ -2,16 +2,16 @@ const { GraphQLScalarType, GraphQLError } = require('graphql');
 const File = require('@adonisjs/bodyparser/src/Multipart/File');
 
 module.exports = new GraphQLScalarType({
-  name: 'GraphQLFile',
-  description: 'The `GraphQLFile` scalar type represents a file upload.',
+  name: 'File',
+  description: 'The `File` scalar type represents a file upload.',
   parseValue(value) {
     if (value instanceof File) return value;
-    throw new GraphQLError('GraphQLFile value invalid.');
+    throw new GraphQLError('File value invalid.');
   },
   parseLiteral(ast) {
-    throw new GraphQLError('GraphQLFile literal unsupported.', ast);
+    throw new GraphQLError('File literal unsupported.', ast);
   },
   serialize() {
-    throw new GraphQLError('GraphQLFile serialization unsupported.');
+    throw new GraphQLError('File serialization unsupported.');
   },
 });
